@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetingMate: Visual Description Assistant</title>
+</head>
+<body>
+    <h1>MeetingMate: Visual Description Assistant for Presentations</h1>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="image">Upload Image:</label>
+        <input type="file" name="image" id="image">
+        
+        <label for="prompt">Caption Prompt:</label>
+        <input type="text" name="prompt" id="prompt" placeholder="e.g., detailed caption">
+    
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if caption %}
+    <h2>Generated Caption:</h2>
+    <p>{{ caption }}</p>
+    <h2>Audio Description:</h2>
+    <audio controls>
+    <source src="{{ audio_url }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    {% endif %}
+</body>
+</html>
